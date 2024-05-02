@@ -1,4 +1,4 @@
-dnf install nginx -y
+dnf install nginx
 systemctl enable nginx
 systemctl start nginx
 rm -rf /usr/share/nginx/html/*
