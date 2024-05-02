@@ -9,4 +9,3 @@ SyslogIdentifier=backend
 
 [Install]
 WantedBy=multi-user.target
-
