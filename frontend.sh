@@ -1,8 +1,4 @@
-log_file=/tmp/expense.log
-
-Head() {
-  echo -e "\e[36m$1\e[0m"
-}
+source common.sh
 
 Head "Install Nginx"
 dnf install nginx -y &>>$log_file
@@ -23,6 +19,7 @@ echo $?
 cd /usr/share/nginx/html
 Head "extract application code"
 unzip /tmp/frontend.zip &>>$log_file
+echo $?
 
 Head "start nginx service"
 systemctl restart nginx &>>$log_file

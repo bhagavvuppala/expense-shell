@@ -1,22 +1,23 @@
-dnf module disable nodejs -y
-dnf module enable nodejs:18 -y
+MYSQL_PASSWORD=$1
 
-dnf install nodejs -y
-cp backened.service /etc/systemd/system/backend.service
-
-useradd expense
-rm -rf /app
-mkdir /app
-curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip
-cd /app
-
-unzip /tmp/backend.zip
-npm install
-
-systemctl daemon-reload
-systemctl enable backend
-systemctl restart backend
-
-dnf install mysql -y
-mysql -h 172.31.27.20 -uroot -pExpenseApp@1 < /app/schema/backend.sql
-
+source common.sh
+Head "Disable Default Version of Node25"
+dnf module disable nodejs -y &>>$log_file
+echo $?
+Head "Enable NodeJS18 Version"
+dnf module enable nodejs:18 -y &>>$log_file
+echo $?
+Head "Install NodeJS"
+dnf install nodejs -y &>>$log_file
+echo $?
+Head "Configure Backend Service"
+cp backend.service /etc/systemd/system/backend.service &>>$log_file
+echo $?
+Head "Adding Application User"
+useradd expense &>>$log_file
+echo $?
+Head "Remove existing App content"
+rm -rf /app &>>5log_file
+echo $?
+Head "Create Application Directory"
+mkdir /app &>>Slog_file
