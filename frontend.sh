@@ -25,6 +25,6 @@ Head "extract application code"
 unzip /tmp/frontend.zip &>>$log_file
 
 Head "start nginx service"
-systemctl enable nginx &>>$log_file
 systemctl restart nginx &>>$log_file
+systemctl enable nginx &>>$log_file
 echo $?
