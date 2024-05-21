@@ -12,7 +12,7 @@ Head "copy expense confic file"
 cp expense.conf /etc/nginx/default.d/expense.conf &>>$log_file
 echo $?
 
-head"remove old content"
+head "remove old content"
 rm -rf /usr/share/nginx/html/* &>>$log_file
 echo $?
 
