@@ -52,3 +52,4 @@ else
 fi
 Head "Create Application Directory"
 mkdir /app &>>Slog_file
+
