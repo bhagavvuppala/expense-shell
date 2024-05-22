@@ -3,6 +3,7 @@ MYSQL_PASSWORD=$1
 source common.sh
 Head "Disable Default Version of Node25"
 dnf module disable nodejs -y &>>$log_file
+
 if [ $? -eq 0 ]; then
   echo success
 else
